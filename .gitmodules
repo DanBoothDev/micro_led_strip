@@ -1,0 +1,3 @@
+[submodule "micro_wifi"]
+	path = micro_wifi
+	url = https://github.com/DanBoothDev/micro_wifi
