@@ -27,6 +27,7 @@
     <form action="/update" method="POST">
         <input type="color" id="colour" name="colour" value="#ff0000"><br><br>
         <input type="submit">
+        <input type="button" onclick="randomize()" value="Randomizer">
     </form>
     
     <script>
@@ -39,7 +40,11 @@
             //     });
             console.log('get colours')
         }
-
+        
+        function randomize() {
+            let random = Math.floor(Math.random()*16777215).toString(16);
+            document.getElementById('colour').value = `#${random.padEnd(6, 0)}`;
+        }
     </script>
 </body>
 
