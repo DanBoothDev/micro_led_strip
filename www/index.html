@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Micro LED Strip</title>
+    <style>
+        .parent {
+            display: grid;
+            place-items: center;
+        }
+
+        #colour {
+            height: 200px;
+            width: 200px;
+        }
+    </style>
+</head>
+
+<body class="parent" onload="getColours()">
+    <h2>Select Colour</h2>
+
+    <div id="loader"></div>
+
+    <form action="/update" method="POST">
+        <input type="color" id="colour" name="colour" value="#ff0000"><br><br>
+        <input type="submit">
+    </form>
+    
+    <script>
+        function getColours() {
+            // todo - detect current colours on page load
+            // fetch('/scan')
+            //     .then(response => response.json())
+            //     .then(data => {
+                    
+            //     });
+            console.log('get colours')
+        }
+
+    </script>
+</body>
+
+</html>
