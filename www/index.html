@@ -12,7 +12,13 @@
             place-items: center;
         }
 
+        form {
+            width: 100%;
+            text-align: center;
+        }
+
         #colour {
+            border: none;
             height: 200px;
             width: 200px;
         }
@@ -26,23 +32,23 @@
 
     <form action="/update" method="POST">
         <input type="color" id="colour" name="colour" value="#ff0000"><br><br>
-        <input type="submit">
         <input type="button" onclick="randomize()" value="Randomizer">
     </form>
-    
+
     <script>
+        const colourInput = document.getElementById('colour');
+
         function getColours() {
-            // todo - detect current colours on page load
-            // fetch('/scan')
-            //     .then(response => response.json())
-            //     .then(data => {
-                    
-            //     });
-            console.log('get colours')
+            // get the current LED colours on page load
+            fetch('/get_rgb')
+                .then(response => response.json())
+                .then(data => {
+                    colourInput.value = '#00ff00'
+                });
         }
-        
+
         function randomize() {
-            let random = Math.floor(Math.random()*16777215).toString(16);
+            let random = Math.floor(Math.random() * 16777215).toString(16);
             document.getElementById('colour').value = `#${random.padEnd(6, 0)}`;
         }
     </script>

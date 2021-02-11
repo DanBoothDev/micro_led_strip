@@ -35,8 +35,17 @@ class MicroLedStrip:
                 pass
             server.send_response(client, html)
 
-        @server.route("/update", 'POST')
-        def connect(client, request):
+        @server.route("/get_rgb")
+        def get_rgb(client, request):
+            [red, green, blue] = self.led_manager.get_rgb()
+            payload = {
+                'status': True,
+                'rgb': '#{:x}{:x}{:x}'.format(red, green, blue)
+            }
+            server.send_response(client, json.dumps(payload), content_type='application/json')
+
+        @server.route("/set_rgb", 'POST')
+        def set_rgb(client, request):
             params = server.get_form_data(request)
             colour = params.get('colour')  # retrieve a seven-character hexadecimal notation
             print('colour {}'.format(colour))
