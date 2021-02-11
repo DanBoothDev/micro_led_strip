@@ -47,6 +47,15 @@ class MicroLedController:
         self._led_pwm_green.duty(green)
         self._led_pwm_blue.duty(blue)
 
+    def get_rgb(self):
+        """
+        Gets the RGB values of all LEDs
+        """
+        red = self._led_pwm_red.duty()
+        green = self._led_pwm_green.duty()
+        blue = self._led_pwm_blue.duty()
+        return red, green, blue
+
     def pulse(self, sleep_duration_ms=5, repeat=1):
         """
         Gradually increases then decreases the duty cycle across all LEDs
