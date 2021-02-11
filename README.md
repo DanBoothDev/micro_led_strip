@@ -1,6 +1,6 @@
 # MicroLedStrip
 
-A MicroPython app that allows an LED strip to be controlled via WiFi.
+A MicroPython app that allows a non-addressable LED strip to be controlled via WiFi.
 
 
 ## Uploading
@@ -11,4 +11,10 @@ pip3 install adafruit-ampy
 ```
 
 ## Usage
-...in dev
+```python
+from micro_led_strip import MicroLedStrip
+
+strip = MicroLedStrip(pin_red=12, pin_green=13, pin_blue=14)
+strip.start()
+
+```
